@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		*{ padding: 0; margin: 0; }
+		body{ padding: 200px; }
+		
+		/*透明*/
+		.opacity{ filter:alpha(opacity=0); -moz-opacity:0; opacity: 0; }
+		
+		/*自定义checkbox样式*/
+		.radio-wrap{ position: relative; display: inline-block; width: 18px; height: 18px; }
+		.radio-wrap .rdo{ position: absolute; z-index: 11; display: block; width: 100%; height: 100%; outline: none; cursor: pointer; }
+		.radio-wrap .rdo-bg{ position: absolute; z-index: 10; display: block; width: 100%; height: 100%; background: url(radio-default.png) no-repeat; }
+		.radio-wrap input.rdo:checked + span.rdo-bg{ background: url(radio-cheched.png) no-repeat; }
+		
+	</style>
+	<body>
+		
+		<span>自定义radio：</span>
+		
+		<!--自定义checkbox-->
+		<label class="radio-wrap">
+			<input type="radio" name="test" class="rdo opacity">
+			<span class="rdo-bg"></span>
+		</label>
+		 
+		 <label class="radio-wrap">
+			<input type="radio" name="test" class="rdo opacity">
+			<span class="rdo-bg"></span>
+		</label>
+		 
+		 <label class="radio-wrap">
+			<input type="radio" name="test" class="rdo opacity">
+			<span class="rdo-bg"></span>
+		</label>
+		 
+	</body>
+</html>

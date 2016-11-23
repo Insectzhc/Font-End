@@ -1,0 +1,73 @@
+@charset "utf-8";
+html, body{ position: relative; width: 100%; max-width: 750px; height: 100%; }
+
+@media screen and (max-width: 320px) {
+  html { font-size: 42.8px }
+}
+
+@media screen and (min-width: 320px) {
+  html { font-size: 42.67px }
+}
+
+@media screen and (min-width: 360px) {
+  html { font-size: 48px }
+}
+
+@media screen and (min-width: 375px) {
+  html { font-size: 50px }
+}
+
+@media screen and (min-width: 385px) {
+  html { font-size: 51.33px }
+}
+
+@media screen and (min-width: 400px) {
+  html { font-size: 53.33px }
+}
+
+@media screen and (min-width: 414px) {
+  html { font-size: 55.2px }
+}
+
+@media screen and (min-width: 450px) {
+  html { font-size: 60px }
+}
+
+@media screen and (min-width: 480px) {
+  html { font-size: 64px }
+}
+
+@media screen and (min-width: 540px) {
+  html { font-size: 72px }
+}
+
+@media screen and (min-width: 600px) {
+  html { font-size: 80px }
+}
+
+@media screen and (min-width: 640px) {
+  html { font-size: 85.33px }
+}
+
+@media screen and (min-width: 750px) {
+  html { font-size: 100px }
+}
+
+/*--------------------功能: 重设浏览器默认样式 START--------------------*/
+a, body, dd, dl, div, dt,
+em, form, h1, h2, h3, h4, h5, h6, header, html,i, img, label, li, ol,
+p, small, span, strong, table, tbody, tfoot, thead, th, tr, tt,
+u, ul{ border: none; margin: 0;padding: 0; border: 0;outline:0; -webkit-text-size-adjust: none; -webkit-tap-highlight-color: rgba(0,0,0,0); }
+table, table td { padding: 0; border: none;}
+img {border: 0;}
+ul, li, ol, dl, dd{ list-style-type: none;}
+input, textarea, select { outline: none; padding: 0; margin: 0;}
+h1, h2, h3, h4, h5, h6 { font-size: 100%; font-weight:bold; }
+body { text-align: left;color: #434343;overflow-x: hidden; background-color: #eee; }
+html,body{ font-family: "microsoft yahei"; color: #434343; }
+a{text-decoration: none; color: #434343; }
+input,input[type="button"], input[type="submit"], input[type="reset"],input[type="number"] {-webkit-appearance: none; border: none; box-sizing: border-box; -webkit-box-sizing: border-box; }
+input::-webkit-inner-spin-button { -webkit-appearance: none; }
+input::-webkit-outer-spin-button { -webkit-appearance: none; }
+
+img { border: none; display: block; } /* img 搭车：让链接里的 img 无边框 */

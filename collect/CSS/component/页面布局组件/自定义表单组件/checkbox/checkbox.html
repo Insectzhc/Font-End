@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		*{ padding: 0; margin: 0; }
+		body{ padding: 200px; }
+		
+		/*透明*/
+		.opacity{ filter:alpha(opacity=0); -moz-opacity:0; opacity: 0; }
+		
+		/*自定义checkbox样式*/
+		.checkbox-wrap{ position: relative; display: inline-block; width: 16px; height: 16px; }
+		.checkbox-wrap .chk{ position: absolute; z-index: 11; display: block; width: 100%; height: 100%; outline: none; cursor: pointer; }
+		.checkbox-wrap .chk-bg{ position: absolute; z-index: 10; display: block; width: 100%; height: 100%; background: url(chk-default.png) no-repeat; }
+		.checkbox-wrap input.chk:checked + span.chk-bg{ background: url(chk-checked.png) no-repeat; }
+		
+	</style>
+	<body>
+		
+		<span>自定义checkbox：</span>
+		
+		<!--自定义checkbox-->
+		<label class="checkbox-wrap">
+			<input type="checkbox" name="test" class="chk opacity">
+			<span class="chk-bg"></span>
+		</label>
+		 
+		<label class="checkbox-wrap">
+			<input type="checkbox" name="test" class="chk opacity">
+			<span class="chk-bg"></span>
+		</label>
+		 
+		<label class="checkbox-wrap">
+			<input type="checkbox" name="test" class="chk opacity">
+			<span class="chk-bg"></span>
+		</label>
+		 
+		
+	</body>
+</html>

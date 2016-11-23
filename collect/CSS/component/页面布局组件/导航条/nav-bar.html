@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		<style type="text/css">
+			*{ padding: 0; margin: 0; }
+			body{ padding: 300px; }
+			
+			/*清除浮动*/
+			.clearfix:after{ content:"."; display:block; height:0; clear:both; visibility:hidden; }
+			.clearfix{ *+height:1%; }
+			
+			.dropdown{ position: relative; }
+			
+			.nav{ list-style: none; }
+			.nav li{ height: 30px; line-height: 30px; float: left; padding: 0 10px; }
+			.nav li a{ text-decoration: none; color: #000; }
+			.nav li .nav-menu{ position: absolute; display: none; width: 100%; }
+			.nav li:hover .nav-menu{ display: block; }
+			
+		</style>
+		
+	</head>
+	<body>
+		<ul class="nav clearfix">
+			<li>nav1</li>
+			<li>nav2</li>
+			<li class="dropdown">
+				<div class="nav-hook">
+					<a href="javascript:void(0)">dropdown</a>
+				</div>
+				<div class="nav-menu">
+					<p>隔壁老王</p>
+				</div>
+			</li>
+			<li>nav4</li>
+			<li>nav5</li>
+			<li>nav6</li>
+		</ul>
+	</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="renderer" content="webkit">
+		<title></title>
+		
+		<style>
+			*{ padding: 0; margin: 0; }
+			body{ padding: 200px; }
+			
+			/*透明*/
+			.opacity{ filter:alpha(opacity=0); -moz-opacity:0; opacity: 0; }
+			
+			/*去除表单默认样式*/
+			.appearance{ appearance: none; -moz-appearance: none; -webkit-appearance: none; }
+			
+			/*position + margin 居中*/
+			.v-middle{ position: absolute; margin: auto; top: 0; left: 0; bottom: 0; right: 0; }
+			
+			/*自定义checkbox样式*/
+			.file-wrap{ position: relative; width: 100px; height: 100px; }
+			.file-wrap .file-box{ position: absolute; z-index: 11; width: 100%; height: 100%; }
+			.file-wrap .file{ display: block; width: 100%; height: 100%; outline: none; cursor: pointer; width: 100%; height: 100%; }
+			.file-wrap .file-bg{ position: absolute; z-index: 10; width: 100%; height: 100%; background: #f5f5f5; }
+			.file-wrap .file-bg img{ max-height: 100%; }
+			
+		</style>
+	</head>
+	
+	<body>
+		
+		<span>自定义file：</span>
+		
+		<!--自定义checkbox-->
+		<div class="file-wrap">
+			<div class="file-box">
+				<input type="file" onchange="previewImage(this)" class="file appearance opacity">
+			</div>
+			<div class="file-bg">
+				<img id="previewImg" class="v-middle" src="upload.png"/>
+			</div>
+		</div>
+		 
+		 
+		 <script>
+		 
+		 	//图片上传预览    IE是用了滤镜。
+	        function previewImage(file)
+	        {
+	          var MAXWIDTH  = 100,
+	          	  MAXHEIGHT = 100;
+	          	  
+	          if (file.files && file.files[0]){
+	              var img = document.getElementById('previewImg');
+	              img.onload = function(){
+	                var rect = clacImgZoomParam(MAXWIDTH, MAXHEIGHT, img.offsetWidth, img.offsetHeight);
+	                img.width  =  rect.width;
+	                img.height =  rect.height;
+	              }
+	              var reader = new FileReader();
+	              reader.onload = function(evt){img.src = evt.target.result;}
+	              reader.readAsDataURL(file.files[0]);
+	          }else{ //兼容IE
+	            var sFilter='filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale,src="';
+	            file.select();
+	            var src = document.selection.createRange().text;
+	            var img = document.getElementById('previewImg');
+	            img.filters.item('DXImageTransform.Microsoft.AlphaImageLoader').src = src;
+	            var rect = clacImgZoomParam(MAXWIDTH, MAXHEIGHT, img.offsetWidth, img.offsetHeight);
+	            status =('rect:'+rect.width+','+rect.height);
+	          }
+	        }
+	        function clacImgZoomParam( maxWidth, maxHeight, width, height ){
+	            var param = {width:width, height:height};
+	            if( width>maxWidth || height>maxHeight )
+	            {
+	                rateWidth = width / maxWidth;
+	                rateHeight = height / maxHeight;
+	                
+	                if( rateWidth > rateHeight )
+	                {
+	                    param.width =  maxWidth;
+	                    param.height = Math.round(height / rateWidth);
+	                }else
+	                {
+	                    param.width = Math.round(width / rateHeight);
+	                    param.height = maxHeight;
+	                }
+	            }
+
+	            return param;
+	        }
+	        
+		 </script>
+		 
+		 
+	</body>
+</html>
