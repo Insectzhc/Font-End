@@ -1,0 +1,37 @@
+/**index.wxss**/
+.btn-recorder{
+  position: fixed;
+  left: 5%;
+  bottom: 100rpx;
+  width: 90%;
+  color: #fff;
+  background-color: #59d1a3;
+}
+.btn-recorder-hover{
+  background-color: #45bc8f;
+}
+.board {  
+  overflow: hidden;  
+  border-bottom: 2rpx solid #26A5FF;    
+}
+/*列布局*/  
+.cell{  
+    display: flex;  
+    margin: 20rpx;  
+}  
+.cell-hd{  
+    margin-left: 10rpx;  
+    color: #885A38;  
+}  
+.cell .cell-bd{  
+    flex:1;  
+    position: relative;  
+     
+}  
+/**只显示一行*/  
+.date{  
+    font-size: 30rpx;  
+    text-overflow: ellipsis;   
+    white-space:nowrap;  
+    overflow:hidden;   
+}

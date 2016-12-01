@@ -2,7 +2,7 @@
 * @Author: anchen
 * @Date:   2016-11-23 18:02:06
 * @Last Modified by:   anchen
-* @Last Modified time: 2016-11-23 19:14:21
+* @Last Modified time: 2016-11-28 11:34:44
 */
 
 *{ margin: 0; padding: 0; }
@@ -46,3 +46,5 @@ body{ background: #000; }
 .container .slide figure:nth-child(9){ -webkit-transform: rotateY( 320deg ) translateZ( 288px ); -moz-transform: rotateY( 320deg ) translateZ( 288px ); -o-transform: rotateY( 320deg ) translateZ( 288px ); transform: rotateY( 320deg ) translateZ( 288px ); }
 
 .container .slide figure img{ max-width: 90%; max-height: 260px; }
+
+a{ display: inline-block; padding: .05rem .08rem; font-size: .3rem; text-decoration: none; color: #59d1a3; background: #fff; border-radius: .02rem; }
