@@ -10,14 +10,13 @@
             next = document.getElementById('next'),
             slide = document.getElementById('slide'),
             rotateNum = 0;
-            console.log(slide.style);
         prev.onclick = function(){
             rotateNum += 40;
-            slide.style.transform = 'translateZ(-288px)'+ 'rotateY(' + rotateNum + 'deg)';
+            slide.style.transform = 'rotateY(' + rotateNum + 'deg)';
         }
         next.onclick = function(){
             rotateNum -= 40;
-            slide.style.transform = 'translateZ(-288px)'+ 'rotateY(' + rotateNum + 'deg)';
+            slide.style.transform = 'rotateY(' + rotateNum + 'deg)';
         }
     }
 })(window || {})
