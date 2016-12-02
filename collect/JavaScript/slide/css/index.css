@@ -8,8 +8,8 @@
 *{ margin: 0; padding: 0; }
 body{ background: #000; }
 
-.container{ position: relative; width: 800px; height: 450px; margin: 0 auto 40px; -webkit-perspective: 1100px; -moz-perspective: 1100px; -o-perspective: 1100px; perspective: 1100px; }
-.container .slide{ width: 800px; height: 450px; position: absolute; -webkit-transform-style: preserve-3d; -moz-transform-style: preserve-3d; -o-transform-style: preserve-3d; transform-style: preserve-3d; -webkit-transition: -webkit-transform 1s; -moz-transition: -moz-transform 1s; -o-transition: -o-transform 1s; transition: transform 1s; }
+.container{ position: relative; width: 800px; height: 450px; margin: 0 auto 40px; -webkit-perspective: 1100px; -moz-perspective: 1100px; perspective: 1100px; }
+.container .slide{ width: 800px; height: 450px; position: absolute; -webkit-transform-style: preserve-3d; -moz-transform-style: preserve-3d; transform-style: preserve-3d; -webkit-transition: -webkit-transform 1s; -moz-transition: -moz-transform 1s; -o-transition: -o-transform 1s; transition: transform 1s; }
 .container .slide figure{ display: block; position: absolute; width: 186px; height: 260px; padding-top: 10px; left: 50%; top: 50%; margin-left: -93px; margin-top: -130px; line-height: 116px; font-size: 80px; font-weight: bold; color: white; text-align: center; }
 .container .slide figure:nth-child(1){ -webkit-transform: rotateY( 0deg ) translateZ( 288px ); -moz-transform: rotateY( 0deg ) translateZ( 288px ); -o-transform: rotateY( 0deg ) translateZ( 288px ); transform: rotateY( 0deg ) translateZ( 288px ); }
 .container .slide figure:nth-child(2){ -webkit-transform: rotateY( 40deg ) translateZ( 288px ); -moz-transform: rotateY( 40deg ) translateZ( 288px ); -o-transform: rotateY( 40deg ) translateZ( 288px ); transform: rotateY( 40deg ) translateZ( 288px ); }
