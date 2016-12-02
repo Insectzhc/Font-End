@@ -1,0 +1,13 @@
+@charset "utf-8";
+
+*{ padding: 0; margin: 0; }
+
+.cube-wrap{ position: relative; width: 300px; height: 300px; margin: 20px auto; -webkit-perspective: 800px; -moz-perspective: 800px; perspective: 800px; }
+.cube-wrap .cube{ position: absolute; width: 300px; height: 300px; -webkit-transform-style: preserve-3d; -moz-transform-style: preserve-3d; transform-style: preserve-3d; -webkit-transition: -webkit-transform 1s; -moz-transition: -moz-transform 1s; -o-transition: -o-transform 1s; transition: transform 1s; }
+.cube-wrap .cube .item{ position: absolute; width: 150px; height: 150px; top: 50%; left: 50%; margin-left: -75px; margin-top: -75px; text-align: center; color: #fff; line-height: 150px; }
+.cube-wrap .cube .item1{ background: rgba(0, 0, 0, .6); transform: rotateX(0deg) translateZ(75px); }
+.cube-wrap .cube .item2{ background: rgba(0, 255, 0, .6); transform: rotateX(180deg) translateZ(75px); }
+.cube-wrap .cube .item3{ background: rgba(196, 0, 0, .6); transform: rotateY(90deg) translateZ(75px); }
+.cube-wrap .cube .item4{ background: rgba(0, 0, 196, .6); transform: rotateY(-90deg) translateZ(75px); }
+.cube-wrap .cube .item5{ background: rgba(196, 196, 0, .6); transform: rotateX(90deg) translateZ(75px); }
+.cube-wrap .cube .item6{ background: rgba(196, 0, 196, .6); transform: rotateX(-90deg) translateZ(75px); }
