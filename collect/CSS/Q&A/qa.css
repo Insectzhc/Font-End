@@ -1,0 +1,4 @@
+@charset "utf-8";
+
+/*使固定高度滚动流畅*/
+.scroll-wrap{ -webkit-overflow-scrolling: touch; }
