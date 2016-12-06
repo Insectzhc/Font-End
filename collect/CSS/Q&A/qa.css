@@ -2,3 +2,6 @@
 
 /*使固定高度滚动流畅*/
 .scroll-wrap{ -webkit-overflow-scrolling: touch; }
+
+/*去掉移动设备点击出现的背景色*/
+-webkit-tap-highlight-color: rgba(0,0,0,0);
