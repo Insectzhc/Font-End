@@ -10,21 +10,39 @@ define(['avalon', 'tool/router.min', 'tool/ajax/ajax.min'], function(av){
     window.global = av.define({
         $id: 'global',
         mod: '',
-
-
+        init: function(){
+        	
+        },
+		$computed: {
+			template: {
+				get: function(){
+					if(this.mod !== ''){
+						return 'assets/tpl/' + this.mod + '.tpl';
+					}
+				}
+			}
+		}
     });
 
     av.router.on('/', function(){
-        global.mod = 'index';
-    });
+        global.mod = 'index'
+    })
 
     av.router.on('/:id', function(mod){
-        global.mod = mod;
+        global.mod = mod
         require(['../' + mod, 'css!../../css/' + mod], function(m){
-            // m.init && m.init();
-            console.log(m);
+            m.init && m.init()
         })
-    });
+    })
+    
+    av.router.on('/:id/:id', function(mod,menu){
+        global.mod = mod
+        require(['../' + mod, 'css!../../css/' + mod], function(m){
+            m.init && m.init(menu)
+        })
+    })
 
     av.scan();
+    
+    return window.global;
 });
