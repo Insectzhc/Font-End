@@ -21,6 +21,14 @@ define(['avalon', 'tool/router.min', 'tool/ajax/ajax.min'], function(av){
 					}
 				}
 			}
+		},
+		
+		//获取列表
+		getList: function(url, data){
+			var result = {};
+			av.post(url, data, function(json){
+				result = json;
+			});
 		}
     });
 

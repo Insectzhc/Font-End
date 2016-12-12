@@ -1,0 +1,1 @@
+<div ms-include="'assets/tpl/front/list.tpl'" data-include-cache="true"></div>
