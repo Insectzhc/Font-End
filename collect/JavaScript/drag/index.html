@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>元素拖放demo</title>
+        <style>
+            #demo{ list-style: none; overflow: hidden; padding: 0; clear: both; }
+            #demo .panel{ float: left; width: 100px; height: 100px; margin: 5px; background: #ddd; border: 1px solid #ddd; }
+            .target{ display: block; width: 50px; height: 50px; background: purple; }
+            li.enter{ border: 1px dashed #000; -webkit-transform: scale(0.8, 0.8); }
+        </style>
+    </head>
+    <body>
+        <ul id="demo">
+            <li class="panel"></li>
+            <li class="panel"></li>
+            <li class="panel"></li>
+            <li class="panel"></li>
+            <li class="panel"></li>
+            <li class="panel"></li>
+        </ul>
+        <span class="target" id="target" draggable="true"></span>
+
+        <script>
+        var drag = {
+            init: function(){
+                var _this = this;
+                _this.panel = document.querySelector('#demo');
+                _this.target = document.querySelector('#target');
+                console.log(_this.panel);
+                _this.target.addEventListener('dragstart', _this.onDragStart, false);
+                _this.panel.addEventListener('dragenter', _this.onDragEnter, false);
+                _this.panel.addEventListener('dragleave', _this.onDragLeave, false);
+                _this.panel.addEventListener('dragover', _this.onDragOver, false);
+                _this.panel.addEventListener('drop', _this.onDrop, false);
+            },
+            onDragStart: function(e){
+                e.dataTransfer.setData('text/plain', 'target');
+            },
+            onDragEnter: function(e){
+                if(e.target.classList.contains('panel')){
+                    e.target.classList.add('enter');
+                }
+            },
+            onDragLeave: function(e){
+                if(e.target.classList.contains('panel')){
+                    e.target.classList.remove('enter');
+                }
+            },
+            onDragOver: function(e){
+                e.preventDefault();
+            },
+            onDrop: function(e){
+                var id = e.dataTransfer.getData('text/plain');
+                var target = document.getElementById(id);
+                if(e.target.classList.contains('panel')){
+                    e.target.classList.remove('enter');
+                    e.target.appendChild(target);
+                }
+            }
+        }
+        drag.init();
+        </script>
+    </body>
+</html>
