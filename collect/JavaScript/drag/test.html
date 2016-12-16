@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>HTML5-Drag-Demo by 顽Shi</title>
+    <style>
+        #demo{ position: relative; list-style: none; overflow: hidden; padding: 0; clear: both; }
+        #demo .panel{ float: left; width: 100px; height: 100px; margin: 5px; background: #ddd; border: 1px solid #ddd; }
+        .target{ display: block; width: 50px; height: 50px; background: purple; }
+        #demo .over{ visibility: hidden; }
+        .placeholder{
+          overflow: hidden;
+          position: absolute !important;
+          width: 90px;
+          height: 90px;
+          box-sizing: border-box;
+          border:4px dashed #639BF6;
+          margin:5px;
+          text-align: center;
+          color: #639BF6;
+          font-weight: bold;
+        }
+    </style>
+  </head>
+  <body>
+      <ul id="demo">
+          <li draggable="true" class="panel"><span>1</span></li>
+          <li draggable="true" class="panel"><span>2</span></li>
+          <li draggable="true" class="panel"><span>3</span></li>
+          <li draggable="true" class="panel"><span>4</span></li>
+          <li draggable="true" class="panel"><span>5</span></li>
+          <li draggable="true" class="panel"><span>6</span></li>
+      </ul>
+      <!-- <span class="target" id="target" draggable="true"></span> -->
+  </body>
+  <script>
+      var drag = {
+            init: function(){
+                var _this = this;
+                _this.elem = document.querySelectorAll('.panel');
+                _this.parentElem = document.getElementById('demo');
+                _this.clientX = 0;
+                _this.clientY = 0;
+
+                [].forEach.call(_this.elem, function(elem){
+                    elem.addEventListener('dragstart', function(e){
+                        var elem = this.cloneNode(true);
+                        var top = this.offsetTop-5;
+                        var left = this.offsetLeft-5;
+                        
+                        console.log(e);
+                        _this.clientX = e.clientX;
+                        _this.clientY = e.clientY;
+
+                        elem.style.position = 'absolute';
+                        elem.style.zIndex = '-99';
+                        elem.style.top = top + 'px';
+                        elem.style.left = left + 'px';
+                        elem.classList.add('newElem');
+                        _this.parentElem.appendChild(elem);
+                    });
+                    elem.addEventListener('dragenter', function(e){
+                        e.target.classList.add('over');
+                    });
+                    elem.addEventListener('drag', function(e){
+                        //
+                    });
+                    elem.addEventListener('dragleave', function(e){
+                        if(e.target.classList.contains('panel')){
+                            e.target.classList.remove('over');
+                        }
+                    });
+                    elem.addEventListener('dragover', function(e){
+                        _this.parentElem.removeChild(document.querySelector('.newElem'));
+                    });
+                    elem.addEventListener('drop', function(e){
+                        if(e.target.classList.contains('panel')){
+                            e.target.classList.remove('over');
+                        }
+                    });
+                });
+                
+            }
+        }
+        drag.init();
+  </script>
+</html>
