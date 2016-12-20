@@ -25,25 +25,9 @@
 			endY = e.touches[0].clientY;
 			distanceX = endX - startX;
 			distanceY = endY - startY;
-			if(distanceX > 0 && Math.abs(distanceX) > Math.abs(distanceY)){
-				//向右滑动
-			}
-			
-			if(distanceX < 0 && Math.abs(distanceX) > Math.abs(distanceY)){
-				//向左滑动
-			}
-			
-			if(distanceY < 0 && Math.abs(distanceY) > Math.abs(distanceX)){
-				//向上滑动
-			}
-			
-			if(distanceY > 0 && Math.abs(distanceY) > Math.abs(distanceX)){
-				//向下滑动
-			}
 		});
 		
 		cube.addEventListener('touchend', function(e){
-			
 			if(distanceX > 0 && Math.abs(distanceX) > Math.abs(distanceY)){
 				//向右滑动
 				rotateY += 90;
