@@ -5,3 +5,18 @@
 
 /*去掉移动设备点击出现的背景色*/
 .btn{ -webkit-tap-highlight-color: rgba(0,0,0,0); }
+
+/*移动端1像素边框问题*/
+.elem::after {
+    content: '';
+    width: 200%;
+    height: 200%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 1px solid #bfbfbf;
+    border-radius: 4px;
+    -webkit-transform: scale(0.5,0.5);
+    transform: scale(0.5,0.5);
+    -webkit-transform-origin: top left;
+}
