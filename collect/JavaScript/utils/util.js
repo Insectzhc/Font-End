@@ -113,7 +113,7 @@ var util = (function(){
 		    e = e || window.event;  
 		    if(e.stopPropagation){
 		        e.stopPropagation();  //W3C阻止冒泡方法  
-		    }else {  
+		    }else {
 		        e.cancelBubble = true; //IE阻止冒泡方法  
 		    }  
 		},
@@ -130,12 +130,14 @@ var util = (function(){
 		            d.scrollTop -= Math.ceil((d.scrollTop + b.scrollTop) * 0.1);
 		            b.scrollTop -= Math.ceil((d.scrollTop + b.scrollTop) * 0.1);
 		            if ((d.scrollTop + b.scrollTop) == 0) clearInterval(btn.timer, window.onscroll = set);
-		        },
-		        10);
+		        }, 10);
 		    };
 		    function set() {
 		        btn.style.display = (d.scrollTop + b.scrollTop > 100) ? 'block': "none"
 		    }
+		},
+		checkNetwork: function(){
+	      	return navigator.onLine ? true : false;
 		},
 		validate: {
 			isEmail: function(str){
@@ -150,6 +152,17 @@ var util = (function(){
 			isUrl: function(str){
 				return /^\b(((https?|ftp):\/\/)?[-a-z0-9]+(\.[-a-z0-9]+)*\.(?:com|edu|gov|int|mil|net|org|biz|info|name|museum|asia|coop|aero|[a-z][a-z]|((25[0-5])|(2[0-4]\d)|(1\d\d)|([1-9]\d)|\d))\b(\/[-a-z0-9_:\@&?=+,.!\/~%\$]*)?)$/i.test(str);
 			}
+		},
+		device: {
+			isWeChat: function(){
+        		return /MicroMessenger/i.test(navigator.userAgent);
+			},
+			isIOS: function(){
+		        return /ipad|iphone|iPod|Macintosh|mac os/i.test(navigator.userAgent);
+		   	},
+		   	isAndroid: function () {
+		        return /Android/i.test(navigator.userAgent);
+		    }
 		}
 	}
 	return u;
