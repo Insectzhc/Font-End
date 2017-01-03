@@ -31,11 +31,21 @@
 				minHand = document.querySelector('.min-hand'),
 				secondHand = document.querySelector('.second-hand');
 				
+			var date = new Date(),
+				hour = date.getHours(),
+				min = date.getMinutes(),
+				second = date.getSeconds();
+				
 			function setClock(){
-				var date = new Date(),
-					hour = date.getHours(),
-					min = date.getMinutes(),
-					second = date.getSeconds();
+				if(second%60 === 0){
+					second = 0;
+					min += 1;
+				}
+				if(min%60 ===0){
+					min = 0;
+					hour += 1;
+				}
+				
 				var hourDeg = ((hour/12) * 360) + ((min/60) * 30) - 90,
 					minDeg = (min/60) * 360 + ((second/60) * 6) - 90,
 					secondDeg = (second/60) * 360 - 90;
@@ -43,6 +53,7 @@
 				hourHand.style.transform = 'rotate(' + hourDeg + 'deg)';
 				minHand.style.transform = 'rotate(' + minDeg + 'deg)';
 				secondHand.style.transform = 'rotate(' + secondDeg + 'deg)';
+				second += 1;
 				setTimeout(setClock,1000);
 			}
 			setClock();
