@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>原生js+css clock</title>
+		<style>
+		    *{ padding: 0; margin: 0; }
+			html{ background: url(background.jpg) no-repeat; background-size: cover; }
+			body{ display: flex; align-items: center; width: 100%; min-height: 100vh; overflow: hidden; }
+			
+			.clock{ width: 300px; height: 300px; padding: 20px; margin: 0 auto; border: 20px solid #fff; border-radius: 50%; background: rgba(0,0,0,.5); }
+			.clock .clock-face{ position: relative; height: 100%; box-sizing: border-box; }
+			.clock .clock-face:after{ position: absolute; top: 50%; left: 50%; transform: translateX(-10px) translateY(-10px); content: ''; width: 20px; height: 20px; border-radius: 50%; background: #a8c5d1; }
+			.clock .hand{ position: absolute; top: 50%; left: 50%; transform-origin: 0% 50%; transform: rotate(-90deg); }
+			.clock .hour-hand{ width: 40%; height: 10px; margin-top: -5px; background: #fff; border-radius: 4px; transition: all 1s; }
+			.clock .min-hand{ width: 45%; height: 5px; margin-top: -2.5px; background: #fff; border-radius: 2px; transition: all .1s; }
+			.clock .second-hand{ height: 2px; width: 50%; margin-top: -1px; border-bottom-right-radius: 100%; border-top-right-radius: 100%; background: red; transition: all .05s; }
+		</style>
+	</head>
+	<body>
+		<div class="clock">
+			<div class="clock-face">
+				<div class="hour-hand hand"></div>
+				<div class="min-hand hand"></div>
+				<div class="second-hand hand"></div>
+			</div>
+		</div>
+		
+		<script>
+			var hourHand = document.querySelector('.hour-hand'),
+				minHand = document.querySelector('.min-hand'),
+				secondHand = document.querySelector('.second-hand');
+				
+			function setClock(){
+				var date = new Date(),
+					hour = date.getHours(),
+					min = date.getMinutes(),
+					second = date.getSeconds();
+				var hourDeg = ((hour/12) * 360) + ((min/60) * 30) - 90,
+					minDeg = (min/60) * 360 + ((second/60) * 6) - 90,
+					secondDeg = (second/60) * 360 - 90;
+				
+				hourHand.style.transform = 'rotate(' + hourDeg + 'deg)';
+				minHand.style.transform = 'rotate(' + minDeg + 'deg)';
+				secondHand.style.transform = 'rotate(' + secondDeg + 'deg)';
+				setTimeout(setClock,1000);
+			}
+			setClock();
+		</script>
+		
+	</body>
+</html>
