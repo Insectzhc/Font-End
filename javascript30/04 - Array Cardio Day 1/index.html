@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<h1>数组方法</h1>
+		<script>
+			var inventors = [
+		      	{ first: 'Albert', last: 'Einstein', year: 1879, passed: 1955 },
+		      	{ first: 'Isaac', last: 'Newton', year: 1643, passed: 1727 },
+		      	{ first: 'Galileo', last: 'Galilei', year: 1564, passed: 1642 },
+		      	{ first: 'Marie', last: 'Curie', year: 1867, passed: 1934 },
+		      	{ first: 'Johannes', last: 'Kepler', year: 1571, passed: 1630 },
+		      	{ first: 'Nicolaus', last: 'Copernicus', year: 1473, passed: 1543 },
+		      	{ first: 'Max', last: 'Planck', year: 1858, passed: 1947 },
+		      	{ first: 'Katherine', last: 'Blodgett', year: 1898, passed: 1979 },
+		      	{ first: 'Ada', last: 'Lovelace', year: 1815, passed: 1852 },
+		      	{ first: 'Sarah E.', last: 'Goode', year: 1855, passed: 1905 },
+		      	{ first: 'Lise', last: 'Meitner', year: 1878, passed: 1968 },
+		      	{ first: 'Hanna', last: 'Hammarström', year: 1829, passed: 1909 }
+		    ];
+		    var flavours = ['Chocolate Chip', 'Kulfi', 'Caramel Praline', 'Chocolate', 'Burnt Caramel', 'Pistachio', 'Rose', 'Sweet Coconut', 'Lemon Cookie', 'Toffeeness', 'Toasted Almond', 'Black Raspberry Crunch', 'Chocolate Brownies', 'Pistachio Almond', 'Strawberry', 'Lavender Honey', 'Lychee', 'Peach', 'Black Walnut', 'Birthday Cake', 'Mexican Chocolate', 'Mocha Almond Fudge', 'Raspberry'];
+    		var people = ['Beck, Glenn', 'Becker, Carl', 'Beckett, Samuel', 'Beddoes, Mick', 'Beecher, Henry', 'Beethoven, Ludwig', 'Begin, Menachem', 'Belloc, Hilaire', 'Bellow, Saul', 'Benchley, Robert', 'Benenson, Peter', 'Ben-Gurion, David', 'Benjamin, Walter', 'Benn, Tony', 'Bennington, Chester', 'Benson, Leana', 'Bent, Silas', 'Bentsen, Lloyd', 'Berger, Ric', 'Bergman, Ingmar', 'Berio, Luciano', 'Berle, Milton', 'Berlin, Irving', 'Berne, Eric', 'Bernhard, Sandra', 'Berra, Yogi', 'Berry, Halle', 'Berry, Wendell', 'Bethea, Erin', 'Bevan, Aneurin', 'Bevel, Ken', 'Biden, Joseph', 'Bierce, Ambrose', 'Biko, Steve', 'Billings, Josh', 'Biondo, Frank', 'Birrell, Augustine', 'Black Elk', 'Blair, Robert', 'Blair, Tony', 'Blake, William'];
+			
+			//1.筛选出十六世纪出生的人
+			var fifteen = inventors.filter(function(inventor){
+				return inventor.year >= 1500 && inventor.year < 1600;
+			});
+			console.table(fifteen);
+			
+			//2.打印出发明家的姓名
+			var fullNames = inventors.map(function(inventor){
+				return inventor.first + ' ' + inventor.last;
+			});
+			console.log(fullNames);
+			
+			//3.按照年龄从大到小进行排序
+			var sortInventors = inventors.sort(function(a, b){
+				return a.year - b.year;
+			});
+			console.table(sortInventors);
+			
+			//4.所有人总共活了多少岁
+			var totalYear = inventors.reduce(function(total, inventor){
+				return total + inventor.passed - inventor.year;
+			},0);
+			console.log('所有人总共活了：' + totalYear + '岁');
+			
+			//5.按照活了多久进行排序
+			var oldest = inventors.sort(function(a, b){
+				return (b.passed - b.year) - (a.passed - a.year);
+			});
+			console.table(oldest);
+			
+			//6.筛选出一个网页里含有某个词语的标题(抓取包含'CSS'字样的书籍)
+			//https://book.douban.com/tag/web
+			//var links = Array.from(document.querySelectorAll('.subject-list h2 a'));
+			//var titles = links.map(function(link){
+			//  return link.title;
+			//});
+			//var CSS = titles.filter(function(title){
+			//  return title.indexOf('CSS') > -1;
+			//});
+			//console.log(CSS);
+			
+			//7.按照姓氏来对发明家进行排序
+			var sortName = inventors.sort(function(a, b){
+				return a.last > b.last ? 1 : -1;
+			});
+			console.table(sortName);
+			
+			//8.统计给出数组中各个物品的数量
+			var data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+			var reduce = data.reduce(function(obj, item){
+				if(!obj[item]){
+					obj[item] = 1;
+				}else{
+					obj[item] += 1;
+				}
+				return obj;
+			}, {});
+			console.log(reduce);
+			
+		</script>
+	</body>
+</html>
