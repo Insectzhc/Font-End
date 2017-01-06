@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Ajax Type Ahead 👀</title>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<div class="search-form">
+		    <input type="text" class="search" placeholder="诗句 诗名 诗人">
+		    <ul class="suggestions">
+		      	<li>输入词句，找一首诗</li>
+		      	<li></li>
+		    </ul>
+		</div>
+		<script>
+			var search = document.querySelector('.search'),
+				suggestions = document.querySelector('.suggestions');
+				
+			function ajax(url, successCallback, failCallback){
+				var request = new XMLHttpRequest();
+				request.open('GET', url, true);
+				
+				request.onload = function() {
+				  	if (request.status >= 200 && request.status < 400) {
+				    	var resp = request.responseText;
+				    	successCallback && successCallback(resp);
+				  	} else {
+				    	// 成功，但是返回一个错误
+				  	}
+				};
+				
+				request.onerror = function() {
+				  	failCallback && failCallback();
+				};
+				
+				request.send();
+			}
+			
+			var poetrys = [];
+			
+			var url = 'https://gist.githubusercontent.com/soyaine/81399bb2b24ca1bb5313e1985533c640/raw/bdf7df2cbcf70706c4a5e51a7dfb8c933ed78878/TangPoetry.json';
+			ajax(url, function(data){
+				poetrys = JSON.parse(data);
+			}, function(){
+				console.warn('获取数据失败！');
+			});
+			
+			function findMatches(keyword, poetrys){
+				var reg = new RegExp(keyword, 'gi');
+				return poetrys.filter(function(poet){
+					var author = poet.detail_author.join('');
+					return poet.detail_text.match(reg) || poet.title.match(reg) || author.match(reg);
+				});
+			}
+			
+			function showMatches(){
+				var value = this.value;
+				var matches = findMatches(value, poetrys),
+					reg = new RegExp(value, 'gi');
+				var html = matches.map(function(poet){
+					var text = poet.detail_text.replace(reg, '<span class="h1">' + value + '</span>');
+					var title = poet.title.replace(reg, '<span class="h1">' + value + '</span>');
+					var author = poet.detail_author.join('').replace(reg, '<span class="h1">' + value + '</span>');
+					return '<li><span class="poet">'+ text +'</span><span class="title">' + title + '-' + author + '</span></li>';
+				}).join('');
+				
+				suggestions.innerHTML = html;
+			}
+			
+			search.addEventListener('keyup', showMatches);
+			
+		</script>
+	</body>
+</html>
