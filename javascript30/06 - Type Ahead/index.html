@@ -42,6 +42,7 @@
 			var url = 'https://gist.githubusercontent.com/soyaine/81399bb2b24ca1bb5313e1985533c640/raw/bdf7df2cbcf70706c4a5e51a7dfb8c933ed78878/TangPoetry.json';
 			ajax(url, function(data){
 				poetrys = JSON.parse(data);
+				console.table(poetrys);
 			}, function(){
 				console.warn('获取数据失败！');
 			});
@@ -68,7 +69,7 @@
 				suggestions.innerHTML = html;
 			}
 			
-			search.addEventListener('keyup', showMatches);
+			search.addEventListener('change', showMatches);
 			
 		</script>
 	</body>

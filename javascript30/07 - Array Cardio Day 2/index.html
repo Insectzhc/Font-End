@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>数组操作第二波</title>
+	</head>
+	<body>
+		<h1>打开控制台</h1>
+		<script>
+			var people = [
+		      { name: 'Wes', year: 1988 },
+		      { name: 'Kait', year: 1986 },
+		      { name: 'Irv', year: 1970 },
+		      { name: 'Lux', year: 2015 }
+		    ];
+		
+		    var comments = [
+		      { text: 'Love this!', id: 523423 },
+		      { text: 'Super good', id: 823423 },
+		      { text: 'You are the best', id: 2039842 },
+		      { text: 'Ramen is my fav food ever', id: 123523 },
+		      { text: 'Nice Nice Nice!', id: 542328 }
+		    ];
+		    
+		    //people 数组中是否有人超过19岁
+		    var currentYear = (new Date()).getFullYear();
+		    var isAdult = people.some(function(person){
+		    	return currentYear - person.year >= 19;
+		    });
+		    console.log('people中是否有成年人：' + isAdult);
+		    
+		    //people 数组中是否所有人都是成年人
+		    var allAdult = people.every(function(person){
+		    	return currentYear - person.year >= 19;
+		    });
+		    console.log('people数组中是否所有人都是成年人：' + allAdult);
+		    
+		    //找到 comments 中id为 823423 的评论
+		    var comment = comments.find(function(comment){
+		    	return comment.id === 823423;
+		    });
+		    console.log('comments 中id为 823423 的评论是：' + comment.text);
+		    
+		    //删除 ID 号为 823423 的评论
+		    var index = comments.findIndex(function(comment){
+		    	return comment.id === 823423;
+		    });
+		    console.table(comments);
+		    comments.splice(index,1);
+		    console.table(comments);
+		    
+		</script>
+	</body>
+</html>
