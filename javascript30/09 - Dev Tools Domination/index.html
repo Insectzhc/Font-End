@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Console 面板调试技巧</title>
+	</head>
+	<body>
+		<p onClick="makeGreen()">×点×我×呀×</p>
+		<script>
+			var dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
+			
+			function makeGreen() {
+		      	const p = document.querySelector('p');
+		      	p.style.color = '#BADA55';
+		      	p.style.fontSize = '50px';
+		    }
+			
+			//常规输出
+			console.log('console.log输出');
+			
+			//字符替换
+			console.log('输出一个字符串%s', 'log');
+			console.log('输出一个整数%d', 1.234);
+			console.log('输出一个浮点数%f', 1.234);
+			console.log('输出一个对象%o', {a:1,b:2});
+			console.log('设定输出%c样式', 'font-size:2em;color:#00fdff');
+			
+			//打印输出dom元素
+			var p = document.querySelector('p');
+			console.log(p);
+			console.dir(p);
+			
+			//warn
+			console.warn('这是一个警告！');
+			//info
+			console.info('这是一个信息！');
+			//error
+			console.error('这是一个错误信息！');
+			
+			//assert
+			console.assert(1 === 1, '输出不了哦！');
+			console.assert(1 === 0, '这句可以输出！');
+			
+			//table
+			console.table(dogs);
+			console.table(dogs, ['age']);
+			
+			//数据分组
+			console.group();
+			console.log('组员');
+			console.groupEnd();
+			
+			//count
+			console.count('输出');
+			console.count('输出');
+			console.count('输出');
+			console.count('输出');
+			console.count('输出');
+			
+			//time统计执行时间
+			console.time('fetch my data');
+			console.timeEnd('fetch my data');
+		</script>
+	</body>
+</html>
