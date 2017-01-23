@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<h3>冒泡排序</h3>
+		<p class="before"></p>
+		<p class="bubble"></p>
+		<br>
+		
+		<h3>选择排序</h3>
+		<p class="before"></p>
+		<p class="select"></p>
+		<br>
+		
+		<script src="algorithm.js"></script>
+		<script>
+			var sourceArr = [3,44,38,5,47,15,36,26,27,2,46,4,19,50,48];
+			
+			var befores = document.querySelectorAll('.before');
+			befores.forEach(function(before){
+				before.innerText = '排序前：[' + sourceArr.toString() + ']';
+			});
+			
+			//冒泡排序
+			var sourceArr = [3,44,38,5,47,15,36,26,27,2,46,4,19,50,48];
+			var bubbleArr = bubbleSort(sourceArr);
+			document.querySelector('.bubble').innerText = '排序后：[' + bubbleArr + ']';
+			
+			//选择排序
+			var sourceArr = [3,44,38,5,47,15,36,26,27,2,46,4,19,50,48];
+			var selectArr = selectionSort(sourceArr);
+			document.querySelector('.select').innerText = '排序后：[' + selectArr + ']';
+		</script>
+	</body>
+</html>
