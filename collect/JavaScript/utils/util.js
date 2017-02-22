@@ -38,6 +38,14 @@ var util = (function(){
 			}
 			return true;
 		},
+		//获取某一天在一年中的第几周 y:年，m:月，d:日
+		getWeekInYear: function(y, m, d){
+			var thisDay = new Date(y, parseInt(m) - 1, d),
+	    		firstDay = new Date(y, 0, 1),
+	        	t = Math.round((thisDay.valueOf() - firstDay.valueOf()) / (24*60*60*1000)); //距离当年第一天过去的时间
+
+	    	return Math.ceil( (t + ((firstDay.getDay() + 1) - 1)) / 7 );
+		},
 		//获取url ? 后面的参数
 		getUrlParam: function(name){
 			return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)', "ig").exec(location.search) || [, ""])[1].replace(/\+/g, '%20')) || null;
