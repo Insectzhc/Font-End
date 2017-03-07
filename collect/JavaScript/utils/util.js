@@ -1,6 +1,7 @@
 var util = (function(){
 	var u = {
-		unique: function(arr){ //数组去重
+		//数组去重
+		unique: function(arr){
 			var param = {}, result = [], len = arr.length, val, type;
 			    for (var i = 0; i < len; i++) {
 			        val = arr[i];
@@ -15,7 +16,8 @@ var util = (function(){
 			    }
 			return result;
 		},
-		compare: function(pro){ //对象数组根据属性排序 比较函数
+		//对象数组根据属性排序 比较函数
+		compare: function(pro){
 			return function(a,b){
 				if(a && b && typeof a === 'object' && typeof b === 'object'){
 					var param1 = a[pro],
@@ -37,6 +39,12 @@ var util = (function(){
 				return false;
 			}
 			return true;
+		},
+		//数据千分位处理
+		toThousands: function(num, result){
+			result = result || '';
+			if(num < 1000){ return num + result; }
+			return toThousands(parseInt(num/1000), result + ',' + (1000 + num%1000 +'').slice(1));
 		},
 		//获取某一天在一年中的第几周 y:年，m:月，d:日
 		getWeekInYear: function(y, m, d){
@@ -79,6 +87,30 @@ var util = (function(){
 			}else{
 			  	el.className += ' ' + className;
 			}
+		},
+		//去除类class
+		removeClass: function(el, className){
+			if(el.classList){
+				el.classList.remove(className)
+			}else{
+				var cls = el.className;
+				cls = cls.replace(className, ''); //替换类名
+				cls = cls.replace(/(\s+)/gi, ' '); //多余的空格换成一个空格
+				cls = cls.replace(/(^\s+)|(\s+$)/g, ''); //去掉首尾可能出现的空格
+				el.className = cls;
+			}
+		},
+		//是否有某个类
+		hasClass: function(el, className){
+		    var cls = el.className; //获取 className
+		    return cls === undefined ? false : (cls.indexOf(className) > -1 ? true : false);
+		},
+		//定时器
+		setCountdown: function(el,t){
+			el.innerText = t + 's后重发';
+			setTimeout(function(){
+				return t > 1 ? setCountdown(el, t-1) : false;
+			}, 1000)
 		},
 		//自定义tap事件(解决cick 300ms 延迟问题)
 		createTapEvent: function(){
