@@ -8,10 +8,10 @@ var util = (function(){
 			        type = typeof val;
 			        if(!param[val]){
 			            param[val] = [type];
-			            result.push(val);
+			            result.push(val)
 			        }else if(param[val].indexOf(type) < 0) {
-			            param[val].push(type);
-			            result.push(val);
+			            param[val].push(type)
+			            result.push(val)
 			        }
 			    }
 			return result;
@@ -30,7 +30,7 @@ var util = (function(){
 					}
 					return typeof a < typeof b ? -1 : 1;
 				}else{
-					throw('error');
+					throw('error')
 				}
 			}
 		},
@@ -61,14 +61,14 @@ var util = (function(){
 		//加载样式文件
 		loadStyle: function(url){
 			try {
-	            document.createStyleSheet(url);
+	            document.createStyleSheet(url)
 	        } catch(e) {
 	            var cssLink = document.createElement('link');
 	            cssLink.rel = 'stylesheet';
 	            cssLink.type = 'text/css';
 	            cssLink.href = url;
 	            var head = document.getElementsByTagName('head')[0];
-	            head.appendChild(cssLink);
+	            head.appendChild(cssLink)
 	        }
 		},
 		//获取ie版本号 9以下，其他浏览器返回false
@@ -83,7 +83,7 @@ var util = (function(){
 		//添加类class（ie8+）
 		addClass: function(el, className){
 			if (el.classList){
-			  	el.classList.add(className);
+			  	el.classList.add(className)
 			}else{
 			  	el.className += ' ' + className;
 			}
@@ -143,7 +143,7 @@ var util = (function(){
 					this.addEventListener('touchend', function() {
 						tapEndTime = event.timeStamp;
 						if(!cancleClick && (tapEndTime - tapStartTime) <= tapTime) {
-							callback();
+							callback()
 						}
 					})
 				}
@@ -152,7 +152,7 @@ var util = (function(){
 		stopBubble: function(e){
 		    e = e || window.event;  
 		    if(e.stopPropagation){
-		        e.stopPropagation();  //W3C阻止冒泡方法  
+		        e.stopPropagation()  //W3C阻止冒泡方法  
 		    }else {
 		        e.cancelBubble = true; //IE阻止冒泡方法  
 		    }  
