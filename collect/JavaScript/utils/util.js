@@ -19,7 +19,7 @@ var util = (function(){
 		//对象数组根据属性排序 比较函数
 		compare: function(pro){
 			return function(a,b){
-				if(a && b && typeof a === 'object' && typeof b === 'object'){
+				if(a && b && (typeof a).toLowerCase() === 'object' && (typeof b).toLowerCase() === 'object'){
 					var param1 = a[pro],
 						param2 = b[pro];
 					if(param1 === param2){
@@ -176,9 +176,7 @@ var util = (function(){
 		        btn.style.display = (d.scrollTop + b.scrollTop > 100) ? 'block': "none"
 		    }
 		},
-		checkNetwork: function(){
-	      	return navigator.onLine ? true : false;
-		},
+		isOnline: navigator.onLine ? true : false,
 		validate: {
 			isEmail: function(str){
 				return  /^(?:\w+\.)*\w+@\w+(?:\.\w+)+$/i.test(str);
@@ -194,15 +192,10 @@ var util = (function(){
 			}
 		},
 		device: {
-			isWeChat: function(){
-        		return /MicroMessenger/i.test(navigator.userAgent);
-			},
-			isIOS: function(){
-		        return /ipad|iphone|iPod|Macintosh|mac os/i.test(navigator.userAgent);
-		   	},
-		   	isAndroid: function () {
-		        return /Android/i.test(navigator.userAgent);
-		    }
+			isMobile: 'ontouchstart' in document,
+			isWeChat: /MicroMessenger/i.test(navigator.userAgent),
+			isIOS: /ipad|iphone|iPod|Macintosh|mac os/i.test(navigator.userAgent),
+		   	isAndroid: /Android/i.test(navigator.userAgent)
 		}
 	}
 	return u;
