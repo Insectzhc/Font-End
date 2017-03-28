@@ -26,3 +26,6 @@
 
 /*多行文本省略号*/
 .elem{ display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
+
+/*Android web视图，例如在 HTC EVO 和三星的 Galaxy Nexus 中，文本输入框在输入时表现的就像占位符。情况为一个类似水印的东西在用户输入区域，一旦用户开始输入便会消失。*/
+*{ -webkit-user-modify: read-write-plaintext-only }
