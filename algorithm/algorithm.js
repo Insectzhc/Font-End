@@ -45,3 +45,27 @@ function selectionSort(arr){
 //	}
 //	return arr;
 //}
+
+//字符串中出现次数最多的单个字符
+function findMaxDuplicateChar(str){
+	var len = str.length,
+		paramObj = {},
+		i = 0,
+		maxStr = '',
+		maxValue = 1;
+	if(len <= 1){ return str }
+	for(; i < len; i++){
+		if(!paramObj[str.substr(i,1)]){
+			paramObj[str.substr(i,1)] = 1;
+		}else{
+			paramObj[str.substr(i,1)]++
+		}
+	}
+	for(var k in paramObj){
+		if(paramObj[k] > maxValue){
+			maxValue = paramObj[k];
+			maxStr = k;
+		}
+	}
+	return maxStr
+}
