@@ -1,0 +1,10 @@
+@charset "utf-8";
+
+*{ margin: 0; padding: 0; }
+body{ padding: 20px; }
+.ui-table{ width: 90%; height: auto; border: 1px solid #ddd; border-left: 0; border-bottom: 0; }
+.ui-table .thead{ background: #f3f3f3; }
+.ui-table .tr{ display: table; width: 100%; border-bottom: 1px solid #ddd; }
+.ui-table .td{ display: table-cell; height: 40px; border-left: 1px solid #ddd; text-align: center; vertical-align: middle; }
+.ui-table .tbody .tr:nth-child(even){ background: #eefafd; }
+.ui-table .tbody .tr:hover{ background: #d9f4fb; }
