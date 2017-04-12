@@ -41,10 +41,10 @@ var util = (function(){
 			return true;
 		},
 		//数据千分位处理
-		toThousands: function(num, result){
-			result = result || '';
-			if(num < 1000){ return num + result; }
-			return toThousands(parseInt(num/1000), result + ',' + (1000 + num%1000 +'').slice(1));
+		toThousands: function(num){
+			return (num + '').replace(/\d{1,3}(?=(\d{3})+$)/g,function(s){
+			    return s + ','
+			})
 		},
 		//获取某一天在一年中的第几周 y:年，m:月，d:日
 		getWeekInYear: function(y, m, d){
