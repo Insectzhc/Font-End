@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>css3表情</title>
+		<style>
+			.frog{ position: relative; width: 125px; height: 120px; }
+			.frog .body{ position: absolute; top: 25px; left: 0; right: 0; width: 110px; height: 86px; margin: auto; background: #A3D768; border-radius: 50%; box-shadow: 4px 4px 0px 0px rgba(163, 215, 104, 0.3); }
+			.frog .body .mouth{ position: absolute; top: 6px; left: 0; right: 0; width: 18px; height: 22px; margin: auto; border-bottom: 3px solid #3F6A34; border-radius: 0%; }
+			.frog .eyes{ position: absolute; top: 8px; left: 0; right: 0; width: 86px; height: 35px; margin: auto; }
+			.frog .eyes .eye{ position: absolute; width: 35px; height: 35px; border-radius: 50%; background: #A3D768; }
+			.frog .eyes .eye-left{ top: 0; left: 0; }
+			.frog .eyes .eye-right{ top: 0; right: 0; }
+			.frog .eyes .eye .eye-inner{ position: absolute; top: 10%; left: 10%; width: 80%; height: 80%; background: #fff; border-radius: 50%; }
+			.frog .eyes .eye .eye-inner:before{ position: absolute; top: 20%; left: 20%; display: block; width: 60%; height: 60%; background: #3F6A34; border-radius: 50%; content: ''; }
+			.frog .eyes .eye .eye-inner:after{ position: absolute; top: 25%; left: 25%; display: block; width: 30%; height: 30%; background: #fff; border-radius: 50%; content: ''; }
+		
+			.smile{ animation: smile 3.8s linear 0s infinite; }
+			@keyframes smile{
+				0%{
+					border-radius: 0%;
+				}
+				20%{
+					border-radius: 50%;
+				}
+				70%{
+					border-radius: 50%;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="frog">
+			<div class="body">
+				<div class="mouth smile"></div>
+			</div>
+			<div class="eyes">
+				<div class="eye eye-left">
+					<div class="eye-inner"></div>
+				</div>
+				<div class="eye eye-right">
+					<div class="eye-inner"></div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

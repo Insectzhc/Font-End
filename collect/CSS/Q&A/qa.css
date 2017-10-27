@@ -29,3 +29,11 @@
 
 /*Android web视图，例如在 HTC EVO 和三星的 Galaxy Nexus 中，文本输入框在输入时表现的就像占位符。情况为一个类似水印的东西在用户输入区域，一旦用户开始输入便会消失。*/
 *{ -webkit-user-modify: read-write-plaintext-only }
+
+/*自定义虚线*/
+.dotted{
+	padding: 1em;
+    border: 1px dashed transparent;
+    background: linear-gradient(white,white) padding-box,
+    repeating-linear-gradient(-45deg,#ccc 0, #ccc 0.25em,white 0,white 0.75em);
+}
