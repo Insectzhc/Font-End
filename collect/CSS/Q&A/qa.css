@@ -37,3 +37,4 @@
     background: linear-gradient(white,white) padding-box,
     repeating-linear-gradient(-45deg,#ccc 0, #ccc 0.25em,white 0,white 0.75em);
 }
+/*android 移动端line-height没有居中 1: tabel-cell 2: line-height:0; padding填充高度*/
