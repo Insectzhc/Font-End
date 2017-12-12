@@ -176,6 +176,37 @@ var util = (function(){
 		        btn.style.display = (d.scrollTop + b.scrollTop > 100) ? 'block': "none"
 		    }
 		},
+		//设置弹窗底部内容(body)不可滚动
+		stopBodyScroll: function(elem, isFixed) {
+		  	if(isFixed){
+		    	window.topY = window.scrollY;
+				elem.style.position = 'fixed';
+		    	elem.style.top = -window.topY + 'px';
+		    	//show popup
+		  	}else{
+		    	elem.style.position = '';
+		    	elem.style.top = '';
+		    	window.scrollTo(0, window.topY);
+		    	//hide popup
+		  	}
+		},
+		//上传图片并限制尺寸
+		loadImg: function(e){
+			var imgList = e.target.files,
+				fs = new FileReader(),
+				image = new Image();
+			fs.readAsDataURL(imgList[0])
+			fs.onload = function(e){
+				image.src= e.target.result;
+		    }
+			image.onload = function(){
+				var width = image.width,
+					height = image.height;
+				if(width != 120 || height != 120){
+					alert('请上传120*120的图片');
+				}
+			};
+		},
 		isOnline: navigator.onLine ? true : false,
 		validate: {
 			isEmail: function(str){

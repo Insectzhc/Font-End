@@ -5,10 +5,11 @@
 		<title>测试</title>
 	</head>
 	<body>
-		<div class="drag" style="position: absolute;transform: translate(10px,10px);background: rgba(0,0,0,.5);width:100px;height: 100px;"></div>
+		<input id="img" type="file" />
 		<script src="util.js"></script>
 		<script>
-			console.log(util.toThousands(11000100010))
+			var $img = document.querySelector('#img');
+			$img.onchange = util.loadImg;
 		</script>
 	</body>
 </html>
