@@ -5,18 +5,22 @@
     <title>css3</title>
     <style type="text/css">
     	*{ padding: 0; margin: 0; }
-    	.wrapper{ overflow: hidden; width: 500px; height: 300px; margin: 100px auto; }
+    	body{ text-align: center; }
+    	.wrapper{ overflow: hidden; width: 500px; height: 300px; margin: 10px auto; }
     	.wrapper .slider{ height: 300px; list-style-type: none; clear: both; }
     	.wrapper .slider.transition{ transition: transform .5s ease-in-out; }
     	.wrapper .slider li{ float: left; width: 500px; height: 300px; }
     	.wrapper .slider li img{ width: 100%; height: 100%; }
+    	.tips li{ display: inline-block; width: 10px; height: 10px; margin: 2px; border-radius: 50%; background: #ddd; }
+    	.tips li.active{ background: #D19D59; }
     </style>
 </head>
 <body>
 	<a id="prev" href="javascript:void(0)">上一页</a>
+	<a id="next" href="javascript:void(0)">下一页</a>
 	<div id="slider" class="wrapper">
 		<ul class="slider">
-			<li>
+			<li class="active">
 				<img src="https://img.alicdn.com/imgextra/i2/1879660321/TB2p3JrhgnH8KJjSspcXXb3QFXa_!!1879660321.jpg" />
 			</li>
 			<li>
@@ -30,130 +34,12 @@
 			</li>
 		</ul>
 	</div>
-	<a id="next" href="javascript:void(0)">下一页</a>
 	<ul id="tips" class="tips">
-		<li>1</li>
-		<li>2</li>
-		<li>3</li>
-		<li>4</li>
+		<li></li><li></li><li></li><li></li>
 	</ul>
+	<script src="slider.js"></script>
 	<script type="text/javascript">
-		function Slider(elemId){
-			this.curPage = 1;
-			this.elem = document.querySelector(elemId);
-			this.slider = this.elem.querySelector('.slider');
-			this.elemWidth = this.elem.offsetWidth;
-			this.timeInterval = Date.now();
-			this.timer = null;
-			this.init();
-		}
-		Slider.prototype.init = function(){
-			this.setDom();
-			this.bindEvent();
-		}
-		
-		Slider.prototype.setDom = function(){
-			var items = this.slider.querySelectorAll('li'),
-				len = items.length,
-				firstChild = items[0].cloneNode(true),
-				lastChild = items[len-1].cloneNode(true);
-			this.nodeLength = len;
-			this.slider.style.width = (len + 2)*this.elemWidth + 'px';
-			this.slider.insertBefore(lastChild, items[0]);
-			this.slider.appendChild(firstChild);
-			this.slider.style.transform = 'translateX('+ -this.elemWidth +'px)';
-		}
-		
-		Slider.prototype.bindEvent = function(){
-			var prev = document.querySelector('#prev'),
-				next = document.querySelector('#next'),
-				tips = document.querySelectorAll('#tips li'),
-				_this = this;
-				
-			if(prev){
-				prev.addEventListener('click', function(e){
-					_this.prev();
-				})
-			}
-			
-			if(next){
-				next.addEventListener('click', function(e){
-					_this.next();
-				})
-			}
-			
-			if(tips.length > 0){
-				tips.forEach(function(item, index){
-					item.addEventListener('click', function(e){
-						_this.toPage(index+1);
-					});
-				});
-			}
-			
-		}
-		
-		Slider.prototype.toPage = function(page){
-			
-			if(this.nodeLength < page){
-				return console.warn('要跳转的页面不存在！');
-			}
-			
-			this.curPage = page;
-			this.slider.classList.add('transition');
-			this.slider.style.transform = 'translateX('+ -this.elemWidth*this.curPage +'px)';
-		}
-		
-		Slider.prototype.next = function(){
-			var _this = this;
-			
-			if(Date.now() - this.timeInterval < 500){
-				if(this.curPage === this.nodeLength + 1){
-					return;
-				}
-				clearTimeout(this.timer);
-			}
-			
-			this.timeInterval = Date.now();
-			this.slider.classList.add('transition');
-			this.curPage++;
-			this.slider.style.transform = 'translateX('+ -this.elemWidth*this.curPage +'px)';
-			
-			if(this.curPage === this.nodeLength + 1){
-				this.timer = setTimeout(function(){
-					_this.slider.classList.remove('transition');
-					_this.slider.style.transform = 'translateX('+ -_this.elemWidth +'px)';
-					_this.curPage = 1;
-					this.timeInterval = Date.now();
-				}, 500)
-			}
-		}
-		
-		Slider.prototype.prev = function(){
-			var _this = this;
-			
-			if(Date.now() - this.timeInterval < 500){
-				if(this.curPage === 0){
-					return;
-				}
-				clearTimeout(this.timer);
-			}
-			
-			this.timeInterval = Date.now();
-			this.slider.classList.add('transition');
-			this.curPage--;
-			this.slider.style.transform = 'translateX('+ -this.elemWidth*this.curPage +'px)';
-			
-			if(this.curPage === 0){
-				this.timer = setTimeout(function(){
-					_this.slider.classList.remove('transition');
-					_this.slider.style.transform = 'translateX('+ -_this.elemWidth*_this.nodeLength +'px)';
-					_this.curPage = _this.nodeLength;
-				}, 500)
-			}
-		}
-		
 		var slider = new Slider('#slider');
-		
 	</script>
 </body>
 </html>
