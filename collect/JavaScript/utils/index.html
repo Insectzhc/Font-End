@@ -9,7 +9,17 @@
 		<script src="util.js"></script>
 		<script>
 			var $img = document.querySelector('#img');
-			$img.onchange = util.loadImg;
+			$img.onchange = function(e){
+				util.checkImg(e, {
+					width: 47,
+					height: 46,
+					size: 0.001, //单位 m
+					cb: function(reg){
+						!reg.pass && alert(reg.msg);
+						console.log(reg)
+					}
+				});
+			};
 		</script>
 	</body>
 </html>

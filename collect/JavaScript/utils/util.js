@@ -190,24 +190,13 @@ var util = (function(){
 		    	//hide popup
 		  	}
 		},
-		//上传图片并限制尺寸
-		loadImg: function(e){
-			var imgList = e.target.files,
-				fs = new FileReader(),
-				image = new Image();
-			fs.readAsDataURL(imgList[0])
-			fs.onload = function(e){
-				image.src= e.target.result;
-		    }
-			image.onload = function(){
-				var width = image.width,
-					height = image.height;
-				if(width != 120 || height != 120){
-					alert('请上传120*120的图片');
-				}
-			};
+		//检测图片是否符合标准
+		checkImg: function(e, option){
+			console.log(e)
+			var files = e.target.files;
+//			console.log(files);
 		},
-		isOnline: navigator.onLine ? true : false,
+		isOnline: navigator.onLine,
 		validate: {
 			isEmail: function(str){
 				return  /^(?:\w+\.)*\w+@\w+(?:\.\w+)+$/i.test(str);
