@@ -7,19 +7,29 @@
 	<body>
 		<p style="color: red;">参数输入  example: 1,2</p>
 		<p>精确加法：</p>
-		<input type="text" value="0.1,0.2" placeholder="参数" />
+		<input id="add-1" type="text" value="0.1,0.2" placeholder="参数" />
 		<button id="btn-add-1">计算</button>
-		<p>结果：<span class="result-add-1"></span></p>
+		<p>结果：<span id="result-add-1"></span></p>
 		<br>
 		<p>非精确加法：</p>
-		<input type="text" value="0.1,0.2" placeholder="参数" />
+		<input id="add-2" type="text" value="0.1,0.2" placeholder="参数" />
 		<button id="btn-add-2">计算</button>
-		<p>结果：<span class="result-add-2"></span></p>
+		<p>结果：<span id="result-add-2"></span></p>
 	</body>
 	<script src="./math.js"></script>
-	<sctipt>
+	<script>
 		
+		document.querySelector('#btn-add-1').onclick = function(){
+			var value = document.querySelector('#add-1').value;
+			value = value.split(',');
+			document.querySelector('#result-add-1').innerHTML = math.add(Number(value[0]),Number(value[1]));
+		};
 		
+		document.querySelector('#btn-add-2').onclick = function(){
+			var value = document.querySelector('#add-2').value;
+			value = value.split(',');
+			document.querySelector('#result-add-2').innerHTML = Number(value[0]) + Number(value[1]);
+		};
 		
-	</sctipt>
+	</script>
 </html>
